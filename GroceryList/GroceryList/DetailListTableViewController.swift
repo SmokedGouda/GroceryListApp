@@ -10,20 +10,15 @@ import UIKit
 
 class DetailListTableViewController: UITableViewController {
 
+    var cellTextToPass = String()
     var secondDetailListArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,9 +31,17 @@ class DetailListTableViewController: UITableViewController {
             if(cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "detailListTableIdentifier")
             }
-            cell.textLabel?.text = secondDetailListArray[indexPath.row] 
+            cell.textLabel?.text = secondDetailListArray[indexPath.row]
             return cell
     }
-
-
+    
+// Function below grabs the index path for the selected cell and pushes the associated cell data to the next view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueToItemDetailsController" {
+            let itemDetailVC: ItemDetailViewController = segue.destinationViewController as! ItemDetailViewController
+            let cell = sender as! UITableViewCell
+            let selectedRow = tableView.indexPathForCell(cell)!.row
+            itemDetailVC.itemDetailLabelText = secondDetailListArray[selectedRow]
+        }
     }
+}

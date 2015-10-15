@@ -2,22 +2,23 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YwK-iU-8c8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Grocery Lists-->
+        <!--Grocery List View Controller-->
         <scene sceneID="ffj-vC-iJe">
             <objects>
-                <tableViewController id="rqw-7w-0qA" customClass="GroceryListViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Grocery List View Controller" id="rqw-7w-0qA" customClass="GroceryListViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1kf-8A-x4n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groceryListTableIdentifier" id="SFA-mc-rgD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="groceryListTableIdentifier" id="SFA-mc-rgD">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFA-mc-rgD" id="tOa-jD-EKW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -36,24 +37,24 @@
             </objects>
             <point key="canvasLocation" x="789" y="387"/>
         </scene>
-        <!--Detail List Table View Controller-->
+        <!--Items in List-->
         <scene sceneID="n9n-zt-wYz">
             <objects>
-                <tableViewController id="V9m-dE-nJd" customClass="DetailListTableViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Items in List" id="V9m-dE-nJd" customClass="DetailListTableViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="w39-Kj-U7E">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailListTableIdentifier" id="Thk-Me-nMG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="detailListTableIdentifier" id="Thk-Me-nMG">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Thk-Me-nMG" id="Ag1-ei-r8Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="RcK-7n-hHt" kind="show" id="Pye-ZE-fvk"/>
+                                    <segue destination="RcK-7n-hHt" kind="show" identifier="segueToItemDetailsController" id="Pye-ZE-fvk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="1495" y="387"/>
         </scene>
-        <!--Item Detail View Controller-->
+        <!--Item Details-->
         <scene sceneID="5Pg-R4-0I1">
             <objects>
-                <viewController id="RcK-7n-hHt" customClass="ItemDetailViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Item Details" id="RcK-7n-hHt" customClass="ItemDetailViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P8Y-PX-MhI"/>
                         <viewControllerLayoutGuide type="bottom" id="5EJ-9Y-K7t"/>
@@ -79,21 +80,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZI-cU-wnv">
-                                <rect key="frame" x="279" y="160" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Filler Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-gb-tGw">
+                                <rect key="frame" x="150" y="225" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6sr-uC-DkG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="GFd-lt-9qM"/>
+                                    <constraint firstAttribute="height" constant="150" id="KRQ-dp-UIS"/>
+                                    <constraint firstAttribute="height" constant="130" id="mUA-tW-a16"/>
+                                    <constraint firstAttribute="width" constant="380" id="oHN-f3-26W"/>
+                                    <constraint firstAttribute="width" constant="450" id="qq6-za-152"/>
+                                    <constraint firstAttribute="width" constant="430" id="qym-wB-qs0"/>
+                                    <constraint firstAttribute="height" constant="130" id="s8o-CH-OZD"/>
+                                    <constraint firstAttribute="width" constant="400" id="tlb-1i-gVb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="yGd-LE-fvg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GFd-lt-9qM"/>
+                                        <exclude reference="mUA-tW-a16"/>
+                                        <exclude reference="oHN-f3-26W"/>
+                                        <exclude reference="qq6-za-152"/>
+                                        <exclude reference="qym-wB-qs0"/>
+                                        <exclude reference="s8o-CH-OZD"/>
+                                        <exclude reference="tlb-1i-gVb"/>
+                                        <exclude reference="yGd-LE-fvg"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZI-cU-wnv">
+                                <rect key="frame" x="270.5" y="163" width="59" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-gb-tGw">
-                                <rect key="frame" x="180" y="251" width="240" height="128"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerX" secondItem="PnI-lT-BN8" secondAttribute="centerX" id="0tj-Qw-yxB"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerY" secondItem="PnI-lT-BN8" secondAttribute="centerY" id="5yq-kc-Dxy"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerY" secondItem="PnI-lT-BN8" secondAttribute="centerY" id="CVM-mR-doi"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerY" secondItem="PnI-lT-BN8" secondAttribute="centerY" id="OTh-24-bjJ"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerX" secondItem="PnI-lT-BN8" secondAttribute="centerX" id="WJp-qN-YhD"/>
+                            <constraint firstItem="yZI-cU-wnv" firstAttribute="centerX" secondItem="PnI-lT-BN8" secondAttribute="centerX" id="lWh-S4-Hfr"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="leading" secondItem="PnI-lT-BN8" secondAttribute="leadingMargin" constant="77" id="ptP-Xl-UeF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TP9-gb-tGw" secondAttribute="trailing" constant="69" id="rbr-qE-vlh"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="centerX" secondItem="PnI-lT-BN8" secondAttribute="centerX" constant="4" id="sNV-rg-ZKt"/>
+                            <constraint firstItem="TP9-gb-tGw" firstAttribute="top" secondItem="yZI-cU-wnv" secondAttribute="bottom" constant="52" id="tbr-Yn-myg"/>
+                            <constraint firstItem="5EJ-9Y-K7t" firstAttribute="top" secondItem="TP9-gb-tGw" secondAttribute="bottom" constant="236" id="v1F-C2-May"/>
+                            <constraint firstItem="yZI-cU-wnv" firstAttribute="top" secondItem="P8Y-PX-MhI" secondAttribute="bottom" constant="99" id="xNV-Dw-gqW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5yq-kc-Dxy"/>
+                                <exclude reference="OTh-24-bjJ"/>
+                                <exclude reference="WJp-qN-YhD"/>
+                                <exclude reference="ptP-Xl-UeF"/>
+                                <exclude reference="rbr-qE-vlh"/>
+                                <exclude reference="sNV-rg-ZKt"/>
+                                <exclude reference="tbr-Yn-myg"/>
+                                <exclude reference="v1F-C2-May"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="itemDetailLabel" destination="yZI-cU-wnv" id="GyC-rw-b3m"/>
+                        <outlet property="itemDetailTextField" destination="TP9-gb-tGw" id="jUy-rF-G0M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vf-Im-M2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

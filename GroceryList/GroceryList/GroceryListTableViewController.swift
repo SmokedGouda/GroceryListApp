@@ -10,7 +10,7 @@ import UIKit
 
 class GroceryListViewController: UITableViewController {
 
-    
+    var selectedIndex = 0
     var groceryLists = GroceryList()
     var detailedListArray = [GroceryItems]()
     override func viewDidLoad() {
@@ -32,19 +32,24 @@ class GroceryListViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
         NSIndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCellWithIdentifier("groceryListTableIdentifier") as UITableViewCell!
-            if(cell == nil) {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "groceryListTableIdentifier")
+        var cell = tableView.dequeueReusableCellWithIdentifier("groceryListTableIdentifier") as UITableViewCell!
+        if(cell == nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "groceryListTableIdentifier")
             }
-            cell.textLabel?.text = groceryLists.myGroceryLists[indexPath.row]
-            return cell
+        cell.textLabel?.text = groceryLists.myGroceryLists[indexPath.row]
+        return cell
     }
-
+    
+//This function below is an optional protocol.  Use it to get the index value of a cell you touch.
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailListVC: DetailListTableViewController = segue.destinationViewController as! DetailListTableViewController
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
         var arrayToPush: GroceryItems
-        arrayToPush = detailedListArray[indexPath!.row]
+        arrayToPush = detailedListArray[(indexPath!.row)]
         detailListVC.secondDetailListArray = arrayToPush.items
         }
 }

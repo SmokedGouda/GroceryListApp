@@ -10,26 +10,45 @@ import UIKit
 
 class ItemDetailViewController: UIViewController {
 
+  
+    @IBOutlet weak var itemDetailLabel: UILabel!
+    @IBOutlet weak var itemDetailTextField: UITextView!
+    
+    var itemDetails = ItemDetailDescriptions()
+    var itemDetailLabelText = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        itemDetailLabel.text = itemDetailLabelText
+        switch itemDetailLabel.text! {
+            case "Milk":
+                itemDetailTextField.text = itemDetails.milk
+            case "OJ":
+                itemDetailTextField.text = itemDetails.oj
+            case "Bread":
+                itemDetailTextField.text = itemDetails.bread
+            case "Lunchmeat":
+                itemDetailTextField.text = itemDetails.lunchmeat
+            case "Chips":
+                itemDetailTextField.text = itemDetails.chips
+            case "Balloons":
+                itemDetailTextField.text = itemDetails.ballons
+            case "Ice Cream":
+                itemDetailTextField.text = itemDetails.iceCream
+            case "Cake":
+                itemDetailTextField.text = itemDetails.cake
+            case "Ghetto Blaster":
+                itemDetailTextField.text = itemDetails.ghettoBlaster
+            case "Dirty Blonde":
+                itemDetailTextField.text = itemDetails.dirtyBlonde
+            case "Milkshake Stout":
+                itemDetailTextField.text = itemDetails.milkshakeStout
+            default:
+                itemDetailTextField.text = "Not on your list"
+            }
     }
-
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
